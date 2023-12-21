@@ -1,7 +1,7 @@
 # DevOps Task
 
 ##Tasks list
-- [ ] [1] Create CI/CD pipeline in one of the cloud providers on your choice (Github, Gitlab, Azure Devops. Etc ..), which builds the java code that is in the    DevOps-task.zip file
+- [ ] [1] Create CI/CD pipeline in one of the cloud providers on your choice (Github, Gitlab, Azure Devops. Etc ..), which builds the java code that is in that repo
 - [ ] [2] Your pipeline should build a Docker image that contains the builded java app and push it in a Docker registry of your choice.
 - [ ] [3] Using Terraform create infrastructure to host the Docker image that you created in the previous step in one of the cloud providers of your choice.
 - [ ] [4] Extend your pipeline and add steps to deploy your Docker image to the infrastructure that you created with Terraform.
