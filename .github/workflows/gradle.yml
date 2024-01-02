@@ -47,4 +47,6 @@ jobs:
           docker build -t css_repo .
           docker tag css_repo:latest 461126874783.dkr.ecr.us-east-1.amazonaws.com/css_repo:latest
           docker push 461126874783.dkr.ecr.us-east-1.amazonaws.com/css_repo:latest
-          
+    - name: Force deployment
+      run: |
+        aws ecs update-service --cluster css-cluster --service css-svc --force-new-deployment
