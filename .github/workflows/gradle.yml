@@ -44,7 +44,7 @@ jobs:
           #docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           #echo $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           #docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          docker build -t css .
-          docker tag css:latest 461126874783.dkr.ecr.us-east-1.amazonaws.com/css:latest
-          docker push 461126874783.dkr.ecr.us-east-1.amazonaws.com/css:latest
+          docker build -t css_repo .
+          docker tag css_repo:latest 461126874783.dkr.ecr.us-east-1.amazonaws.com/css_repo:latest
+          docker push 461126874783.dkr.ecr.us-east-1.amazonaws.com/css_repo:latest
           
