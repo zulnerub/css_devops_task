@@ -1,7 +1,13 @@
+#
+# Define ECS CLUSTER:
+#
 resource "aws_ecs_cluster" "css_ecs_cluster" {
   name = join("-", [  var.env_prefix, "cluster"])
 }
 
+#
+# Define cloud watch:
+#
 resource "aws_cloudwatch_log_group" "css_log_group" {
   name = var.css_app_log_group
   tags = {
@@ -9,6 +15,9 @@ resource "aws_cloudwatch_log_group" "css_log_group" {
   }
 }
 
+#
+# Define ECS TASK:
+# 
 resource "aws_ecs_task_definition" "css_ecs_task_definition" {
   family                   = join("-", [ var.env_prefix,"task_def" ])
   network_mode             = "awsvpc"
@@ -74,6 +83,9 @@ resource "aws_lb" "css_application_load_balancer" {
   }
 }
 
+#
+# Application load balancer target group
+#
 resource "aws_alb_target_group" "css_application_load_balancer_target_group" {
   name        =  join("-", [ var.env_prefix, "tg"])
   port        = 8080
@@ -94,6 +106,9 @@ resource "aws_alb_target_group" "css_application_load_balancer_target_group" {
   }
 }
 
+#
+# Application load balancer listener
+#
 resource "aws_alb_listener" "css_application_load_balancer_listener" {
   load_balancer_arn = aws_lb.css_application_load_balancer.arn
   port              = 8080
@@ -104,9 +119,11 @@ resource "aws_alb_listener" "css_application_load_balancer_listener" {
   }
 }
 
+#
+# Define ECS SERVICE
+#
 resource "aws_ecs_service" "css_ecs_service" {
   name               = join("-", [ var.env_prefix, "svc"])
-  #platform_version   = var.platform_version
   cluster            = aws_ecs_cluster.css_ecs_cluster.id
   task_definition    = aws_ecs_task_definition.css_ecs_task_definition.id
   desired_count      = var.css_app_count

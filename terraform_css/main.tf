@@ -74,7 +74,6 @@ resource "aws_route_table_association" "css_route_table_association_subnet_b" {
 #
 resource "aws_security_group" "css_security_group" {
   name = join("-", [ var.env_prefix, "sg" ])
-  #name = "hawkbit-prod-SecurityGroupHawkBit-12ZLUKYXDOKS0"
   vpc_id      = aws_vpc.css_vpc.id
   ingress {
     description = "Public access"
